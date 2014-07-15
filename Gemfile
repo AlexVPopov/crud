@@ -23,6 +23,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'pry-rails'
+  gem 'pry-remote'
 end
 
 
