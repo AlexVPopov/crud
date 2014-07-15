@@ -42,7 +42,6 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        undo_link = view_context.link_to 'undo', revert_version_path(@car.versions.last), method: :post
         format.html { redirect_to @car, notice: "Car was successfully updated. #{undo_link}" }
         format.json { render :show, status: :ok, location: @car }
       else
@@ -57,7 +56,7 @@ class CarsController < ApplicationController
   def destroy
     @car.destroy
     respond_to do |format|
-      format.html { redirect_to cars_url, notice: 'Car was successfully destroyed.' }
+      format.html { redirect_to cars_url, notice: "Car was successfully destroyed. #{undo_link}" }
       format.json { head :no_content }
     end
   end
@@ -71,5 +70,9 @@ class CarsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
       params.require(:car).permit(:model, :year, :kilometers, :color)
+    end
+
+    def undo_link
+      view_context.link_to 'undo', revert_version_path(@car.versions.scoped.last), method: :post
     end
 end
