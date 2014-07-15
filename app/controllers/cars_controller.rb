@@ -42,7 +42,8 @@ class CarsController < ApplicationController
   def update
     respond_to do |format|
       if @car.update(car_params)
-        format.html { redirect_to @car, notice: 'Car was successfully updated.' }
+        undo_link = view_context.link_to 'undo', revert_version_path(@car.versions.last), method: :post
+        format.html { redirect_to @car, notice: "Car was successfully updated. #{undo_link}" }
         format.json { render :show, status: :ok, location: @car }
       else
         format.html { render :edit }
