@@ -32,6 +32,8 @@ GEM
       sass (~> 3.2)
     bootstrap-sass-extras (0.0.6)
       rails (>= 3.1.0)
+    bootswatch-rails (3.2.0)
+      railties (>= 3.1)
     builder (3.2.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -165,6 +167,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   bootstrap-sass-extras
+  bootswatch-rails
   coffee-rails (~> 4.0.0)
   jbuilder (~> 2.0)
   jquery-rails
