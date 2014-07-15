@@ -16,12 +16,4 @@ ActiveRecord::Schema.define(version: 20140714100115) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cars", force: true do |t|
-    t.string   "brand"
-    t.string   "model"
-    t.integer  "year"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
