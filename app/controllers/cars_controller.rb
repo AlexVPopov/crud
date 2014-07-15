@@ -28,7 +28,7 @@ class CarsController < ApplicationController
 
     respond_to do |format|
       if @car.save
-        format.html { redirect_to @car, notice: 'Car was successfully created.' }
+        format.html { redirect_to cars_path, notice: "Car was successfully created. #{undo_link}" }
         format.json { render :show, status: :created, location: @car }
       else
         format.html { render :new }
@@ -73,6 +73,6 @@ class CarsController < ApplicationController
     end
 
     def undo_link
-      view_context.link_to 'undo', revert_version_path(@car.versions.scoped.last), method: :post
+      view_context.link_to 'undo', revert_version_path(@car.versions.scope.last), method: :post
     end
 end
