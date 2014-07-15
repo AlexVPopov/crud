@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Model:
+  = @car.model
+p
+  strong Year:
+  = @car.year
+p
+  strong Kilometers:
+  = @car.kilometers
+p
+  strong Color:
+  = @car.color
+
+= link_to 'Edit', edit_car_path(@car)
+'|
+= link_to 'Back', cars_path
