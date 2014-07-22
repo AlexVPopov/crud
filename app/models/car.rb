@@ -3,8 +3,8 @@ class Car < ActiveRecord::Base
 
   validates :model, :year, :kilometers, :color, presence: true
   validates :kilometers, numericality: { only_integer: true,
-                                         greater_then_or_equal_to: 0 }
+                                         greater_than_or_equal_to: 0 }
   validates :year, numericality: { only_integer: true,
-                                   greater_then_or_equal_to: 1984,
-                                   less_then_or_equal_to: Time.now.year }
+                                   greater_than_or_equal_to: 1894,
+                                   less_than_or_equal_to: Time.now.year }
 end
