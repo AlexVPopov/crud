@@ -5,6 +5,7 @@ table.table.table-striped
   thead
     tr
       th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:brand)
       th= model_class.human_attribute_name(:model)
       th= model_class.human_attribute_name(:year)
       th= model_class.human_attribute_name(:kilometers)
@@ -15,6 +16,7 @@ table.table.table-striped
     - @cars.each do |car|
       tr
         td= car.id
+        td= car.brand
         td= car.model
         td= car.year
         td= number_with_delimiter(car.kilometers)
