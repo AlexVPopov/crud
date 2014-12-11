@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   post 'versions/:id/revert' => 'versions#revert', as: 'revert_version'
 
   resources :cars
+  resources :drivers
 
   root 'cars#index'
 
