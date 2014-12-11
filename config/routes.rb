@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :driving_styles
+
   post 'versions/:id/revert' => 'versions#revert', as: 'revert_version'
 
   resources :cars
