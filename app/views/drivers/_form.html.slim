@@ -1,9 +1,13 @@
-= form_for @driver do |f|
-  - if @driver.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@driver.errors.count, "error")} prohibited this driver from being saved:"
-      ul
-        - @driver.errors.full_messages.each do |message|
-          li = message
-
-  .actions = f.submit 'Save'
+= form_for @driver, :html => { :class => "form-horizontal" } do |f|
+  .form-group
+    = f.label :name, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :name, :class => 'text_field form-control'
+  .form-group
+    = f.label :age, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :age, :class => 'text_field form-control'
+  .form-group
+    .col-md-offset-2.col-md-10
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), drivers_path, :class => 'btn btn-default'
