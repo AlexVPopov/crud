@@ -7,6 +7,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:id)
       th= model_class.human_attribute_name(:name)
       th= model_class.human_attribute_name(:age)
+      th= model_class.human_attribute_name(:driving_style)
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
@@ -15,6 +16,7 @@ table.table.table-striped
         td= driver.id
         td= driver.name
         td= driver.age
+        td= driver.driving_style.style_type
         td=l driver.created_at, format: :long
         td
           = link_to driver_path(driver), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
