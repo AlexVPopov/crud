@@ -1,0 +1,19 @@
+h1 Listing drivers
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @drivers.each do |driver|
+      tr
+        td = link_to 'Show', driver
+        td = link_to 'Edit', edit_driver_path(driver)
+        td = link_to 'Destroy', driver, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Driver', new_driver_path
