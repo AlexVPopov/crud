@@ -12,7 +12,7 @@ table.table.table-striped
     - @driving_styles.each do |driving_style|
       tr
         td= driving_style.id
-        td= driving_style.type
+        td= driving_style.style_type
         td=l driving_style.created_at, format: :long
         td
           = link_to driving_style_path(driving_style), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
