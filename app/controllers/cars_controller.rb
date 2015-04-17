@@ -1,5 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  before_action :parse_ages, only: [:create, :update]
 
   # GET /cars
   # GET /cars.json
@@ -69,10 +70,18 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:brand, :model, :year, :kilometers, :color)
+      params.require(:car).permit(:brand, :model, :year, :kilometers, :color, :ages => [])
     end
 
     def undo_link
       view_context.link_to 'undo', revert_version_path(@car.versions.scope.last), method: :post
+    end
+
+    def parse_ages
+      params[:car][:ages] = if params[:car][:ages].present?
+                              params[:car][:ages].split(',')
+                            else
+                              []
+                            end
     end
 end
