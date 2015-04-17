@@ -11,6 +11,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:kilometers)
       th= model_class.human_attribute_name(:color)
       th= model_class.human_attribute_name(:created_at)
+      th= model_class.human_attribute_name(:ages)
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @cars.each do |car|
@@ -22,6 +23,7 @@ table.table.table-striped
         td= number_with_delimiter(car.kilometers)
         td= car.color
         td=l car.created_at, format: :long
+        td= car.ages.join(', ')
         td
           = link_to car_path(car), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
             = glyph 'info-sign'
