@@ -19,6 +19,9 @@ div class="page-header"
     dt.label.label-default= model_class.human_attribute_name(:color)
     dd
       pre.prettyprint= @car.color
+    dt.label.label-default= model_class.human_attribute_name(:ages)
+    dd
+      pre.prettyprint= @car.ages.join(', ')
 
 .form-group
   = link_to t('.back', :default => t("helpers.links.back")), cars_path, :class => 'btn btn-default'
