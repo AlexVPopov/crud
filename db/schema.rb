@@ -11,23 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211185104) do
+ActiveRecord::Schema.define(version: 20150417145015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cars", force: true do |t|
-    t.string   "model"
+  create_table "cars", force: :cascade do |t|
+    t.string   "model",      limit: 255
     t.integer  "year"
     t.integer  "kilometers"
-    t.string   "color"
+    t.string   "color",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "brand"
+    t.string   "brand",      limit: 255
+    t.integer  "ages",                   default: [], array: true
   end
 
-  create_table "drivers", force: true do |t|
-    t.string   "name"
+  add_index "cars", ["ages"], name: "index_cars_on_ages", using: :gin
+
+  create_table "drivers", force: :cascade do |t|
+    t.string   "name",             limit: 255
     t.integer  "age"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,17 +39,17 @@ ActiveRecord::Schema.define(version: 20141211185104) do
 
   add_index "drivers", ["driving_style_id"], name: "index_drivers_on_driving_style_id", using: :btree
 
-  create_table "driving_styles", force: true do |t|
-    t.string   "style_type"
+  create_table "driving_styles", force: :cascade do |t|
+    t.string   "style_type", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "versions", force: true do |t|
-    t.string   "item_type",  null: false
-    t.integer  "item_id",    null: false
-    t.string   "event",      null: false
-    t.string   "whodunnit"
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",  limit: 255, null: false
+    t.integer  "item_id",                null: false
+    t.string   "event",      limit: 255, null: false
+    t.string   "whodunnit",  limit: 255
     t.text     "object"
     t.datetime "created_at"
   end
