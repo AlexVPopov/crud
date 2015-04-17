@@ -4,21 +4,21 @@ div class="page-header"
 
 .fieldset
   dl
-      dt.label.label-default= model_class.human_attribute_name(:brand)
-      dd
-        pre.prettyprint= @car.brand
-      dt.label.label-default= model_class.human_attribute_name(:model)
-      dd
-        pre.prettyprint= @car.model
-      dt.label.label-default= model_class.human_attribute_name(:year)
-      dd
-        pre.prettyprint= @car.year
-      dt.label.label-default= model_class.human_attribute_name(:kilometers)
-      dd
-        pre.prettyprint= number_with_delimiter(@car.kilometers)
-      dt.label.label-default= model_class.human_attribute_name(:color)
-      dd
-        pre.prettyprint= @car.color
+    dt.label.label-default= model_class.human_attribute_name(:brand)
+    dd
+      pre.prettyprint= @car.brand
+    dt.label.label-default= model_class.human_attribute_name(:model)
+    dd
+      pre.prettyprint= @car.model
+    dt.label.label-default= model_class.human_attribute_name(:year)
+    dd
+      pre.prettyprint= @car.year
+    dt.label.label-default= model_class.human_attribute_name(:kilometers)
+    dd
+      pre.prettyprint= number_with_delimiter(@car.kilometers)
+    dt.label.label-default= model_class.human_attribute_name(:color)
+    dd
+      pre.prettyprint= @car.color
 
 .form-group
   = link_to t('.back', :default => t("helpers.links.back")), cars_path, :class => 'btn btn-default'
