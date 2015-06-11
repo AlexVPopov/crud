@@ -1,6 +1,7 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   before_action :parse_ages, only: [:create, :update]
+  before_action :parse_model_year_month, only: [:create, :update]
 
   # GET /cars
   # GET /cars.json
@@ -70,7 +71,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:brand, :model, :year, :kilometers, :color, :ages => [])
+      params.require(:car).permit(:brand, :model, :model_year_month, :kilometers, :color, :ages => [])
     end
 
     def undo_link
@@ -78,10 +79,14 @@ class CarsController < ApplicationController
     end
 
     def parse_ages
-      params[:car][:ages] = if params[:car][:ages].present?
-                              params[:car][:ages].split(',')
-                            else
-                              []
-                            end
+      ages = params[:car][:ages].present? ? params[:car][:ages].split(',') : []
+      params[:car][:ages] = ages
+    end
+
+    def parse_model_year_month
+      if params[:car]['year(1i)'].present? && params[:car]['year(2i)'].present?
+        params[:car][:model_year_month] = Date.new(params[:car]['year(1i)'].to_i,
+                                                   params[:car]['year(2i)'].to_i)
+      end
     end
 end
