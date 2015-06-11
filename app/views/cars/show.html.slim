@@ -10,9 +10,9 @@ div class="page-header"
     dt.label.label-default= model_class.human_attribute_name(:model)
     dd
       pre.prettyprint= @car.model
-    dt.label.label-default= model_class.human_attribute_name(:year)
+    dt.label.label-default= model_class.human_attribute_name(:model_year_month)
     dd
-      pre.prettyprint= @car.year
+      pre.prettyprint= @car.model_year_month.strftime("%b %Y")
     dt.label.label-default= model_class.human_attribute_name(:kilometers)
     dd
       pre.prettyprint= number_with_delimiter(@car.kilometers)
