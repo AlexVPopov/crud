@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417145015) do
+ActiveRecord::Schema.define(version: 20150611075148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cars", force: :cascade do |t|
     t.string   "model",      limit: 255
-    t.integer  "year"
     t.integer  "kilometers"
     t.string   "color",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "brand",      limit: 255
-    t.integer  "ages",                   default: [], array: true
+    t.integer  "ages",                   default: [],                        array: true
+    t.date     "year",                   default: '1900-01-01', null: false
   end
 
   add_index "cars", ["ages"], name: "index_cars_on_ages", using: :gin
